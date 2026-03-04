@@ -1,0 +1,79 @@
+############################
+# IntelliJ IDEA
+############################
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+############################
+# Maven
+############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+############################
+# Spring Boot
+############################
+logs/
+*.log
+*.log.*
+spring.log
+
+############################
+# OS files
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Temporary / swap
+############################
+*.swp
+*.swo
+*~
+*.tmp
+
+############################
+# Environment / local config
+############################
+.env
+.env.*
+application-local.yml
+application-local.properties
+application-*.local.yml
+application-*.local.properties
+
+############################
+# Node (se usi frontend o toolchain)
+############################
+node_modules/
+dist/
+build/
+
+############################
+# Test / coverage
+############################
+coverage/
+*.lcov
+
+############################
+# Docker (opzionale)
+############################
+.docker/
+docker-compose.override.yml
+
+############################
+# Misc
+############################
+*.class
+*.jar
+*.war
+*.ear
