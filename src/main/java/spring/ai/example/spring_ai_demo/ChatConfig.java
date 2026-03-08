@@ -65,4 +65,30 @@ public class ChatConfig {
                 .defaultSystem("Sei un severo e noioso professore universitario. Rispondi in modo estremamente formale, accademico e pedante.")
                 .build();
     }
+
+    // Client 5: Il client "Tracciato" (Audited) con metadata di default
+    @Bean
+    public ChatClient auditedClient(OllamaChatModel llamaModel) {
+        return ChatClient.builder(llamaModel)
+                .defaultSystem(s -> s.text("Sei un assistente aziendale molto formale.")
+                        .metadata("app-version", "1.0.0")
+                        .metadata("department", "customer-service"))
+                .defaultUser(u -> u.text("Richiesta di supporto standard.")
+                        .metadata("default-priority", "low"))
+                .build();
+    }
+
+    // Client 6: Il client "Camaleonte" con System Text parametrizzato e Opzioni di default
+    @Bean
+    public ChatClient dynamicRoleClient(OllamaChatModel llamaModel) {
+        return ChatClient.builder(llamaModel)
+                // Usiamo un placeholder {voice} nel system prompt di default
+                .defaultSystem("Sei un assistente virtuale. Rispondi sempre immedesimandoti nella voce e nello stile di: {voice}")
+
+                // Impostiamo delle opzioni di base per questo client (es. creatività alta)
+                .defaultOptions(OllamaChatOptions.builder()
+                        .temperature(0.8) // Più il valore è vicino a 1, più è creativo
+                        .build())
+                .build();
+    }
 }
