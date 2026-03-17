@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Streaming IA</title>
+    <style>
+        body { font-family: Arial; padding: 50px; line-height: 1.6; }
+        #testo-ia {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 100px;
+            word-wrap: break-word; /* Sicurezza extra per far andare a capo il testo */
+        }
+    </style>
+</head>
+<body>
+<h1>La Macchina da Scrivere dell'IA 🤖</h1>
+<button onclick="avviaStreaming()">Genera Storia</button>
+<p id="testo-ia"></p>
+
+<script>
+    function avviaStreaming() {
+        const paragrafo = document.getElementById("testo-ia");
+        paragrafo.innerHTML = ""; // Puliamo il box
+
+        const eventSource = new EventSource("/ai/stream/storia");
+
+        eventSource.onmessage = function(event) {
+            // Usiamo innerHTML così il browser traduce gli &nbsp; in veri spazi visivi!
+            paragrafo.innerHTML += event.data;
+        };
+
+        eventSource.onerror = function() {
+            eventSource.close();
+        };
+    }
+</script>
+</body>
+</html>

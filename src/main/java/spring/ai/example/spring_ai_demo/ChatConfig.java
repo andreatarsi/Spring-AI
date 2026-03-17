@@ -4,8 +4,13 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaChatOptions;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 
 @Configuration
 public class ChatConfig {
@@ -25,6 +30,7 @@ public class ChatConfig {
     }
 
     @Bean
+    @Primary // Diciamo a Spring che questo è il modello "default" da iniettare quando serve un OllamaChatModel
     public OllamaChatModel mistralModel(OllamaApi ollamaApi) {
         return OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
@@ -33,6 +39,26 @@ public class ChatConfig {
                         .build())
                 .build();
     }
+
+    // Aggiungendo ("visionModel"), blindiamo il nome per il Qualifier!
+    @Bean("visionModel")
+    public ChatModel visionModel(OllamaApi ollamaApi) {
+        return OllamaChatModel.builder()
+                .ollamaApi(ollamaApi)
+                .defaultOptions(OllamaChatOptions.builder()
+                        .model("llama3.2-vision") // Il modello che ha letto la tua ricetta
+                        .temperature(0.0)
+                        .build())
+                .build();
+    }
+
+    // 2. Il ChatClient dedicato alla vista
+    @Bean
+    @Qualifier("visionClient")
+    public ChatClient visionChatClient(ChatModel llavaModel) {
+        return ChatClient.builder(llavaModel).build();
+    }
+
 
     // ==========================================
     // 2. DEFINIZIONE DEI CLIENT (Le "Personalità")
