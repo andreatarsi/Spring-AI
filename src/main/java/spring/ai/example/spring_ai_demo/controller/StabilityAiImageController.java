@@ -5,12 +5,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.image.ImageResponse;
+
+// NUOVO: Rimosso .api e corretta la gerarchia
+// Togli il vecchio e prova questo:
 import org.springframework.ai.stabilityai.api.StabilityAiImageOptions;
+// Se usi le classi API dirette, anch'esse sono state spostate:
+// import org.springframework.ai.stabilityai.api.StabilityAiApi; -> org.springframework.ai.stabilityai.api.StabilityAiApi (dipende dalla versione, ma solitamente resta sotto .api solo la classe di basso livello)
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-// import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 

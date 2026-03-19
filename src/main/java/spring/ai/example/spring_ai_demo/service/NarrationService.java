@@ -1,14 +1,20 @@
 package spring.ai.example.spring_ai_demo.service;
 
-import org.springframework.ai.openai.audio.speech.OpenAiAudioSpeechModel;
-import org.springframework.ai.openai.audio.speech.OpenAiAudioSpeechOptions;
+// 1. OpenAI: I modelli TTS e le opzioni sono stati spostati qui
+import org.springframework.ai.openai.OpenAiAudioSpeechModel;
+import org.springframework.ai.openai.OpenAiAudioSpeechOptions;
 import org.springframework.ai.openai.api.OpenAiAudioApi;
-import org.springframework.ai.transcription.TranscriptionModel;
-import org.springframework.ai.tts.TextToSpeechModel;
+
+// 2. Interfaccia Trascrizione (Universale)
+import org.springframework.ai.audio.transcription.TranscriptionModel;
+
+// 3. Interfaccia TTS (Universale)
+import org.springframework.ai.audio.tts.TextToSpeechModel;
+
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
-@Service
+//@Service
 public class NarrationService {
 
     private final TextToSpeechModel ttsModel;

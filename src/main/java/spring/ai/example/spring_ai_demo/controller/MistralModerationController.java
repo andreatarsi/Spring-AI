@@ -2,7 +2,7 @@ package spring.ai.example.spring_ai_demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ai.mistralai.MistralAiModerationOptions;
+import org.springframework.ai.mistralai.moderation.MistralAiModerationOptions;
 import org.springframework.ai.moderation.ModerationModel;
 import org.springframework.ai.moderation.ModerationPrompt;
 import org.springframework.ai.moderation.ModerationResponse;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-// import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -18,7 +18,7 @@ import java.util.Map;
  * Controller per la moderazione tramite Mistral AI.
  * Include controlli su PII (Privacy) e Law/Financial.
  */
-// @RestController
+ @RestController
 @RequestMapping("/ai/mistral-moderation")
 public class MistralModerationController {
 
@@ -30,7 +30,7 @@ public class MistralModerationController {
         this.mistralModerationModel = mistralModerationModel;
     }
 
-    /*
+
     @GetMapping("/check")
     public Map<String, Object> check(@RequestParam String text) {
         logger.info("Verifica sicurezza contenuto con Mistral AI...");
@@ -55,5 +55,5 @@ public class MistralModerationController {
                 "scores", result.getCategoryScores()
         );
     }
-    */
+
 }

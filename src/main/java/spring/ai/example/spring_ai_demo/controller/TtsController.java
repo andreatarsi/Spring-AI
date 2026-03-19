@@ -8,7 +8,7 @@ import spring.ai.example.spring_ai_demo.service.NarrationService;
 
 import java.util.Map;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/speech")
 public class TtsController {
 

@@ -1,8 +1,10 @@
 package spring.ai.example.spring_ai_demo.service;
 
-import org.springframework.ai.transcription.TranscriptionModel;
-import org.springframework.ai.transcription.AudioTranscriptionPrompt;
-import org.springframework.ai.transcription.AudioTranscriptionResponse;
+
+import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
+import org.springframework.ai.audio.transcription.AudioTranscriptionResponse;
+import org.springframework.ai.audio.transcription.TranscriptionModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,7 @@ public class TranscriptionService {
 
     private final TranscriptionModel transcriptionModel;
 
-    public TranscriptionService(TranscriptionModel transcriptionModel) {
+    public TranscriptionService(@Qualifier("openAiAudioTranscriptionModel") TranscriptionModel transcriptionModel) {
         this.transcriptionModel = transcriptionModel;
     }
 

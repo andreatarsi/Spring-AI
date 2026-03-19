@@ -4,6 +4,7 @@ import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.image.ImageResponse;
 import org.springframework.ai.image.ImageOptionsBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,7 +13,8 @@ public class ImageService {
     private final ImageModel imageModel;
 
     // Spring inietterà il modello di immagine attivo (es. OpenAI o StabilityAI)
-    public ImageService(ImageModel imageModel) {
+    // Usiamo il Qualifier per decidere quale dei 4 usare di default
+    public ImageService(@Qualifier("openAiImageModel") ImageModel imageModel) {
         this.imageModel = imageModel;
     }
 
