@@ -5,19 +5,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.openaisdk.OpenAiSdkChatOptions;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ai.chat.model.ChatModel;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/official")
 public class OpenAiOfficialController {
 
     private static final Logger logger = LoggerFactory.getLogger(OpenAiOfficialController.class);
     private final ChatClient chatClient;
 
-    public OpenAiOfficialController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    // REFACTORING: Chiediamo esplicitamente il motore di OpenAI
+    public OpenAiOfficialController(@Qualifier("openAiChatModel") ChatModel chatModel) {
+        // Creiamo il ChatClient "isolato"
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

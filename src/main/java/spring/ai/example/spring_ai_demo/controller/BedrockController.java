@@ -6,6 +6,8 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.bedrock.converse.api.BedrockCacheOptions;
 import org.springframework.ai.bedrock.converse.api.BedrockCacheStrategy;
 import org.springframework.ai.bedrock.converse.BedrockChatOptions;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import spring.ai.example.spring_ai_demo.service.MockWeatherService;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/bedrock")
 public class BedrockController {
 
@@ -23,8 +25,8 @@ public class BedrockController {
     // Qui inietteremo il client di Bedrock.
     // NOTA: Se provi a lanciare questo endpoint ORA (con Ollama), andrà in errore
     // perché stiamo usando BedrockChatOptions. Serve solo come "template" per il futuro!
-    public BedrockController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public BedrockController(@Qualifier("bedrockCohereChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

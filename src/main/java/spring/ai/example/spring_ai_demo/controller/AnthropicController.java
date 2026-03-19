@@ -7,7 +7,9 @@ import org.springframework.ai.anthropic.api.AnthropicApi;
 import org.springframework.ai.anthropic.AnthropicSkillsResponseHelper;
 import org.springframework.ai.anthropic.api.CitationDocument;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +18,15 @@ import spring.ai.example.spring_ai_demo.service.MockWeatherService;
 
 import java.util.List;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/anthropic")
 public class AnthropicController {
 
     private static final Logger logger = LoggerFactory.getLogger(AnthropicController.class);
     private final ChatClient chatClient;
 
-    public AnthropicController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public AnthropicController(@Qualifier("anthropicChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

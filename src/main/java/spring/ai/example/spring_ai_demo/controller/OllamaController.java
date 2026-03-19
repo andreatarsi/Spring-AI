@@ -3,24 +3,36 @@ package spring.ai.example.spring_ai_demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.ollama.api.OllamaModel;
 import org.springframework.ai.ollama.api.OllamaChatOptions;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 import reactor.core.publisher.Flux;
 
+import jakarta.annotation.PostConstruct;
+
 @RestController
 @RequestMapping("/ai/ollama")
 public class OllamaController {
 
     private static final Logger logger = LoggerFactory.getLogger(OllamaController.class);
-    private final ChatClient chatClient;
 
-    public OllamaController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    // Iniezione diretta della classe specifica!
+    @Autowired
+    private OllamaChatModel ollamaChatModel;
+
+    private ChatClient chatClient;
+
+    // Costruiamo il client DOPO che Spring ha iniettato il modello
+    @PostConstruct
+    public void init() {
+        this.chatClient = ChatClient.create(ollamaChatModel);
     }
 
     /**

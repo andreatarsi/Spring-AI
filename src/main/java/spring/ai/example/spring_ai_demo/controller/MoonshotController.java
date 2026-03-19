@@ -3,20 +3,22 @@ package spring.ai.example.spring_ai_demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/moonshot")
 public class MoonshotController {
 
     private static final Logger logger = LoggerFactory.getLogger(MoonshotController.class);
     private final ChatClient chatClient;
 
-    public MoonshotController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public MoonshotController(@Qualifier("moonshotChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

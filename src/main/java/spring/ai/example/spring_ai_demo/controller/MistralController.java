@@ -10,11 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ai.chat.model.ChatModel; // <-- Aggiungi questo
+import org.springframework.beans.factory.annotation.Qualifier; // <-- Aggiungi questo
 
 import java.net.MalformedURLException;
 import java.util.List;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/mistral")
 public class MistralController {
 
@@ -23,9 +25,15 @@ public class MistralController {
     private final String mistralApiKey;
 
     // Iniettiamo il ChatClient e ci "rubiamo" la chiave API dalle properties per l'OCR
-    public MistralController(ChatClient chatClient,
-                             @Value("${spring.ai.mistralai.api-key:dummy}") String mistralApiKey) {
-        this.chatClient = chatClient;
+    // REFACTORING: Uniamo il @Qualifier per il motore e il @Value per la stringa
+    public MistralController(
+            @Qualifier("mistralAiChatModel") ChatModel chatModel,
+            @Value("${spring.ai.mistralai.api-key:dummy}") String mistralApiKey) {
+
+        // 1. Costruiamo il client blindato su Mistral
+        this.chatClient = ChatClient.create(chatModel);
+
+        // 2. Salviamo la chiave API esattamente come facevamo prima
         this.mistralApiKey = mistralApiKey;
     }
 

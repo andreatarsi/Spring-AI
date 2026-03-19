@@ -7,16 +7,20 @@ import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/perplexity")
 public class PerplexityController {
 
     private static final Logger logger = LoggerFactory.getLogger(PerplexityController.class);
     private final ChatClient chatClient;
 
-    public PerplexityController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    // Usiamo il motore di OpenAI come "cavallo di Troia" per Perplexity
+    public PerplexityController(@Qualifier("openAiChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

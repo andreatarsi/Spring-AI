@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.azure.openai.AzureOpenAiChatOptions;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import spring.ai.example.spring_ai_demo.service.MockWeatherService; // Il nostro Tool!
 
-@RestController
+//@RestController
 @RequestMapping("/ai/azure")
 public class AzureController {
 
     private static final Logger logger = LoggerFactory.getLogger(AzureController.class);
     private final ChatClient chatClient;
 
-    public AzureController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public AzureController(@Qualifier("azureOpenAiChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

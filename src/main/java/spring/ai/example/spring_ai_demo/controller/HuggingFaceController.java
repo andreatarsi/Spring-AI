@@ -3,19 +3,21 @@ package spring.ai.example.spring_ai_demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/huggingface")
 public class HuggingFaceController {
 
     private static final Logger logger = LoggerFactory.getLogger(HuggingFaceController.class);
     private final ChatClient chatClient;
 
-    public HuggingFaceController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public HuggingFaceController(@Qualifier("huggingfaceChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

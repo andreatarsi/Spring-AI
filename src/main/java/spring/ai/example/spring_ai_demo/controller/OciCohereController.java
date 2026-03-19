@@ -3,19 +3,21 @@ package spring.ai.example.spring_ai_demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/oracle")
 public class OciCohereController {
 
     private static final Logger logger = LoggerFactory.getLogger(OciCohereController.class);
     private final ChatClient chatClient;
 
-    public OciCohereController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public OciCohereController(@Qualifier("ociGenAiChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

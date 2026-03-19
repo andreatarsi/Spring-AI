@@ -3,6 +3,8 @@ package spring.ai.example.spring_ai_demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.vertexai.gemini.VertexAiGeminiChatOptions;
 import org.springframework.ai.vertexai.gemini.common.VertexAiGeminiSafetyRating;
@@ -13,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/vertex")
 public class VertexController {
 
     private static final Logger logger = LoggerFactory.getLogger(VertexController.class);
     private final ChatClient chatClient;
 
-    public VertexController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public VertexController(@Qualifier("vertexAiGeminiChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**

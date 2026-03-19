@@ -3,22 +3,24 @@ package spring.ai.example.spring_ai_demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import spring.ai.example.spring_ai_demo.service.MockWeatherService;
 
-@RestController
+//@RestController
 @RequestMapping("/ai/groq")
 public class GroqController {
 
     private static final Logger logger = LoggerFactory.getLogger(GroqController.class);
     private final ChatClient chatClient;
 
-    public GroqController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public GroqController(@Qualifier("openAiChatModel") ChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     /**
