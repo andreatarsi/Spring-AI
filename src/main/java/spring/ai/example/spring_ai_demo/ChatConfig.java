@@ -12,7 +12,7 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaChatOptions;
 
-@Configuration
+//@Configuration
 public class ChatConfig {
 
     // ==========================================
