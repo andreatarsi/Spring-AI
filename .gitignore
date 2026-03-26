@@ -44,12 +44,13 @@ Thumbs.db
 ############################
 # Environment / local config
 ############################
-.env
+secrets.properties
 .env.*
 application-local.yml
 application-local.properties
 application-*.local.yml
 application-*.local.properties
+secrets.properties
 
 ############################
 # Node (se usi frontend o toolchain)
