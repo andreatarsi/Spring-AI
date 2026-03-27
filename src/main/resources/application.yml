@@ -93,6 +93,7 @@ spring:
           options:
             model: gemini-2.5-flash
             temperature: 0.0
+            google-search-retrieval: false
         embedding:
           enabled: false
 
@@ -109,7 +110,11 @@ spring:
       chat:
         options:
           model: claude-haiku-4-5-20251001
-          temperature: 0.0
+          temperature: 0.0 # Il thinking funziona meglio con temperature alte
+#          max-tokens: 4096
+#          thinking: # <--- SUPERPOTERE CLAUDE AGGIUNTO QUI
+#            type: false
+#            budget-tokens: 2048
 
 ---
 # 🦙 PROFILO: OLLAMA
