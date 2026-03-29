@@ -1,0 +1,133 @@
+spring:
+  application:
+    name: spring-ai-enterprise
+  # AGGIUNGI QUESTE DUE RIGHE:
+  config:
+    import: optional:file:./secrets.properties
+  main:
+    allow-bean-definition-overriding: true
+
+  # ----------------------------------------------------------------------------
+  # IL BAZOOKA (Sottile): Solo ciò che blocca l'avvio fisico
+  # ----------------------------------------------------------------------------
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.model.azure.openai.autoconfigure.AzureOpenAiChatAutoConfiguration
+      - org.springframework.ai.model.azure.openai.autoconfigure.AzureOpenAiEmbeddingAutoConfiguration
+      - org.springframework.ai.model.zhipuai.autoconfigure.ZhiPuAiChatAutoConfiguration
+      - org.springframework.ai.model.zhipuai.autoconfigure.ZhiPuAiImageAutoConfiguration
+
+  # ----------------------------------------------------------------------------
+  # DISATTIVAZIONE CHIRURGICA & CONFIGURAZIONE MODELLI
+  # Spegniamo i motori di default. Per accenderli, passa -D<MODEL>_ENABLED=true
+  # ----------------------------------------------------------------------------
+  ai:
+    # ♊ GEMINI
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY:}
+        project-id: "dummy-project-id" # <--- Aggiunto questo
+        chat:
+          enabled: ${GEMINI_ENABLED:false}
+          options:
+            model: gemini-2.5-flash
+            temperature: 0.0
+            google-search-retrieval: false
+        embedding:
+          enabled: false
+
+    # 🧠 CLAUDE
+    anthropic:
+      api-key: ${ANTHROPIC_API_KEY:}
+      chat:
+        enabled: ${ANTHROPIC_ENABLED:false}
+        options:
+          model: claude-haiku-4-5-20251001
+          temperature: 0.0 # Il thinking funziona meglio con temperature alte
+    #          max-tokens: 4096
+    #          thinking: # <--- SUPERPOTERE CLAUDE AGGIUNTO QUI
+    #            type: false
+    #            budget-tokens: 2048
+
+    # 🤖 OPENAI
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      chat:
+        enabled: ${OPENAI_ENABLED:false}
+        options:
+          model: gpt-4o
+
+    # 🦙 OLLAMA
+    ollama:
+      chat:
+        enabled: ${OLLAMA_ENABLED:false}
+        options:
+          model: llama3.1
+
+    # ☁️ AZURE
+    azure:
+      openai:
+        api-key: ${AZURE_API_KEY:dummy}
+        endpoint: ${AZURE_ENDPOINT:https://dummy.openai.azure.com}
+        chat:
+          enabled: ${AZURE_ENABLED:false}
+          options:
+            deployment-name: gpt-4o
+
+    # 🏔️ BEDROCK
+    bedrock:
+      aws:
+        region: us-east-1
+      converse:
+        chat:
+          # enabled: ${BEDROCK_ENABLED:false}  # (Scommentare se il builder lo supporta)
+          options:
+            model: anthropic.claude-3-sonnet-20240229-v1:0
+
+    # 🎨 MULTIMEDIA (Stability AI / ElevenLabs)
+    stabilityai:
+      api-key: ${STABILITY_API_KEY:}
+    elevenlabs:
+      api-key: ${ELEVENLABS_API_KEY:}
+
+    # 🌪️ OTHERS (Mistral, DeepSeek, HF)
+    mistralai:
+      api-key: ${MISTRAL_API_KEY:}
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY:}
+    huggingface:
+      chat:
+        api-key: ${HF_API_KEY:}
+
+    # 🌙 MOONSHOT
+    moonshot:
+      api-key: ${MOONSHOT_API_KEY:}
+      chat:
+        enabled: ${MOONSHOT_ENABLED:false}
+
+# ==============================================================================
+# IL CRUSCOTTO DELLE FEATURE (Fondamentale per la tua classe Java)
+# ==============================================================================
+app:
+  ai:
+    system-message: "Sei un assistente enterprise esperto. Rispondi in modo professionale e tecnico."
+    features:
+      memory-enabled: true
+      memory-max-messages: 10
+      tools-enabled: true
+      logging-enabled: true
+      structured-output: true
+      output-format: JSON
+
+# 📊 CONFIGURAZIONE ACTUATOR E METRICHE
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus # Abilitiamo Prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name} # Taggiamo i dati col nome dell'app
+  endpoint:
+    health:
+      show-details: always
