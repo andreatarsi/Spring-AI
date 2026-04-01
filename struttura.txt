@@ -1,0 +1,481 @@
+Folder PATH listing for volume Windows
+Volume serial number is F2A7-8F9A
+C:.
+|   .gitattributes
+|   .gitignore
+|   HELP.md
+|   hs_err_pid19860.log
+|   mvnw
+|   mvnw.cmd
+|   pom.xml
+|   pom.xml.pre_modulos
+|   replay_pid19860.log
+|   run-ai.bat
+|   spring-ai-demo.iml
+|   struttura.txt
+|   tutti-i-pom.txt
+|   
++---.idea
+|       compiler.xml
+|       copilot.data.migration.ask2agent.xml
+|       encodings.xml
+|       jarRepositories.xml
+|       misc.xml
+|       modules.xml
+|       spring-ai-demo.iml
+|       vcs.xml
+|       workspace.xml
+|       
++---.mvn
+|   \---wrapper
+|           maven-wrapper.properties
+|           
++---ai-app
+|   |   pom.xml
+|   |   secrets.properties
+|   |   
+|   +---src
+|   |   +---main
+|   |   |   +---java
+|   |   |   |   \---spring
+|   |   |   |       \---ai
+|   |   |   |           \---example
+|   |   |   |               \---spring_ai_demo
+|   |   |   |                   |   SpringAiDemoApplication.java
+|   |   |   |                   |   
+|   |   |   |                   \---web
+|   |   |   |                       \---controller
+|   |   |   |                               AudioController.java
+|   |   |   |                               ChatController.java
+|   |   |   |                               ImageController.java
+|   |   |   |                               
+|   |   |   \---resources
+|   |   |       |   application.yml
+|   |   |       |   
+|   |   |       +---prompts
+|   |   |       |       storia.st
+|   |   |       |       
+|   |   |       +---static
+|   |   |       |   |   test.jpeg
+|   |   |       |   |   
+|   |   |       |   +---audio
+|   |   |       |   |       Recording.m4a
+|   |   |       |   |       Recording.mp3
+|   |   |       |   |       
+|   |   |       |   \---html
+|   |   |       |           storia.html
+|   |   |       |           
+|   |   |       \---templates
+|   |   \---test
+|   |       \---java
+|   |           \---spring
+|   |               \---ai
+|   |                   \---example
+|   |                       \---spring_ai_demo
+|   |                               AiEndpointsSmokeTest.java
+|   |                               SpringAiDemoApplicationTests.java
+|   |                               
+|   \---target
+|       |   ai-app-0.0.1-SNAPSHOT.jar
+|       |   ai-app-0.0.1-SNAPSHOT.jar.original
+|       |   
+|       +---classes
+|       |   |   application.yml
+|       |   |   
+|       |   +---prompts
+|       |   |       storia.st
+|       |   |       
+|       |   +---spring
+|       |   |   \---ai
+|       |   |       \---example
+|       |   |           \---spring_ai_demo
+|       |   |               |   SpringAiDemoApplication.class
+|       |   |               |   
+|       |   |               \---web
+|       |   |                   \---controller
+|       |   |                           AudioController.class
+|       |   |                           ChatController.class
+|       |   |                           ImageController.class
+|       |   |                           
+|       |   \---static
+|       |       |   test.jpeg
+|       |       |   
+|       |       +---audio
+|       |       |       Recording.m4a
+|       |       |       Recording.mp3
+|       |       |       
+|       |       \---html
+|       |               storia.html
+|       |               
+|       +---generated-sources
+|       |   \---annotations
+|       +---generated-test-sources
+|       |   \---test-annotations
+|       +---maven-archiver
+|       |       pom.properties
+|       |       
+|       +---maven-status
+|       |   \---maven-compiler-plugin
+|       |       +---compile
+|       |       |   \---default-compile
+|       |       |           createdFiles.lst
+|       |       |           inputFiles.lst
+|       |       |           
+|       |       \---testCompile
+|       |           \---default-testCompile
+|       |                   createdFiles.lst
+|       |                   inputFiles.lst
+|       |                   
+|       \---test-classes
+|           \---spring
+|               \---ai
+|                   \---example
+|                       \---spring_ai_demo
+|                               AiEndpointsSmokeTest.class
+|                               SpringAiDemoApplicationTests.class
+|                               
++---ai-claude
+|   |   pom.xml
+|   |   
+|   +---src
+|   |   +---main
+|   |   |   +---java
+|   |   |   |   \---spring
+|   |   |   |       \---ai
+|   |   |   |           \---example
+|   |   |   |               \---spring_ai_demo
+|   |   |   |                   \---ai
+|   |   |   |                       \---superpowers
+|   |   |   |                               ClaudeSuperpowerProvider.java
+|   |   |   |                               
+|   |   |   \---resources
+|   |   \---test
+|   |       \---java
+|   \---target
+|       |   ai-claude-0.0.1-SNAPSHOT.jar
+|       |   
+|       +---classes
+|       |   \---spring
+|       |       \---ai
+|       |           \---example
+|       |               \---spring_ai_demo
+|       |                   \---ai
+|       |                       \---superpowers
+|       |                               ClaudeSuperpowerProvider.class
+|       |                               
+|       +---generated-sources
+|       |   \---annotations
+|       +---generated-test-sources
+|       |   \---test-annotations
+|       +---maven-archiver
+|       |       pom.properties
+|       |       
+|       +---maven-status
+|       |   \---maven-compiler-plugin
+|       |       +---compile
+|       |       |   \---default-compile
+|       |       |           createdFiles.lst
+|       |       |           inputFiles.lst
+|       |       |           
+|       |       \---testCompile
+|       |           \---default-testCompile
+|       |                   createdFiles.lst
+|       |                   inputFiles.lst
+|       |                   
+|       \---test-classes
++---ai-core
+|   |   pom.xml
+|   |   
+|   +---src
+|   |   +---main
+|   |   |   +---java
+|   |   |   |   \---spring
+|   |   |   |       \---ai
+|   |   |   |           \---example
+|   |   |   |               \---spring_ai_demo
+|   |   |   |                   +---service
+|   |   |   |                   |       AiAudioService.java
+|   |   |   |                   |       AiChatService.java
+|   |   |   |                   |       AiImageService.java
+|   |   |   |                   |       McpServerEventListener.java
+|   |   |   |                   |       WeatherMcpService.java
+|   |   |   |                   |       
+|   |   |   |                   \---web
+|   |   |   |                       +---ai
+|   |   |   |                       |   +---config
+|   |   |   |                       |   |       AiFeatureProperties.java
+|   |   |   |                       |   |       McpAdvancedConfig.java
+|   |   |   |                       |   |       SecurityConfig.java
+|   |   |   |                       |   |       UniversalAiConfig.java
+|   |   |   |                       |   |       
+|   |   |   |                       |   +---superpowers
+|   |   |   |                       |   |       SuperpowerProvider.java
+|   |   |   |                       |   |       
+|   |   |   |                       |   \---tools
+|   |   |   |                       |           DateTimeTools.java
+|   |   |   |                       |           MockWeatherService.java
+|   |   |   |                       |           
+|   |   |   |                       \---dto
+|   |   |   |                               AiResponse.java
+|   |   |   |                               ChatRequestDTO.java
+|   |   |   |                               ChatResponseDTO.java
+|   |   |   |                               
+|   |   |   \---resources
+|   |   \---test
+|   |       \---java
+|   \---target
+|       |   ai-core-0.0.1-SNAPSHOT.jar
+|       |   
+|       +---classes
+|       |   \---spring
+|       |       \---ai
+|       |           \---example
+|       |               \---spring_ai_demo
+|       |                   +---service
+|       |                   |       AiAudioService.class
+|       |                   |       AiChatService$1.class
+|       |                   |       AiChatService$StructuredResponse.class
+|       |                   |       AiChatService.class
+|       |                   |       AiImageService.class
+|       |                   |       WeatherMcpService.class
+|       |                   |       
+|       |                   \---web
+|       |                       +---ai
+|       |                       |   +---config
+|       |                       |   |       AiFeatureProperties$Features.class
+|       |                       |   |       AiFeatureProperties$OutputFormat.class
+|       |                       |   |       AiFeatureProperties.class
+|       |                       |   |       SecurityConfig.class
+|       |                       |   |       UniversalAiConfig.class
+|       |                       |   |       
+|       |                       |   +---superpowers
+|       |                       |   |       SuperpowerProvider.class
+|       |                       |   |       
+|       |                       |   \---tools
+|       |                       |           DateTimeTools.class
+|       |                       |           MockWeatherService.class
+|       |                       |           
+|       |                       \---dto
+|       |                               AiResponse.class
+|       |                               ChatRequestDTO.class
+|       |                               ChatResponseDTO.class
+|       |                               
+|       +---generated-sources
+|       |   \---annotations
+|       +---generated-test-sources
+|       |   \---test-annotations
+|       +---maven-archiver
+|       |       pom.properties
+|       |       
+|       +---maven-status
+|       |   \---maven-compiler-plugin
+|       |       +---compile
+|       |       |   \---default-compile
+|       |       |           createdFiles.lst
+|       |       |           inputFiles.lst
+|       |       |           
+|       |       \---testCompile
+|       |           \---default-testCompile
+|       |                   createdFiles.lst
+|       |                   inputFiles.lst
+|       |                   
+|       \---test-classes
++---ai-gemini
+|   |   pom.xml
+|   |   
+|   +---src
+|   |   +---main
+|   |   |   +---java
+|   |   |   |   \---spring
+|   |   |   |       \---ai
+|   |   |   |           \---example
+|   |   |   |               \---spring_ai_demo
+|   |   |   |                   \---ai
+|   |   |   |                       \---superpowers
+|   |   |   |                               GeminiSuperpowerProvider.java
+|   |   |   |                               
+|   |   |   \---resources
+|   |   \---test
+|   |       \---java
+|   \---target
+|       |   ai-gemini-0.0.1-SNAPSHOT.jar
+|       |   
+|       +---classes
+|       |   \---spring
+|       |       \---ai
+|       |           \---example
+|       |               \---spring_ai_demo
+|       |                   \---ai
+|       |                       \---superpowers
+|       |                               GeminiSuperpowerProvider.class
+|       |                               
+|       +---generated-sources
+|       |   \---annotations
+|       +---generated-test-sources
+|       |   \---test-annotations
+|       +---maven-archiver
+|       |       pom.properties
+|       |       
+|       +---maven-status
+|       |   \---maven-compiler-plugin
+|       |       +---compile
+|       |       |   \---default-compile
+|       |       |           createdFiles.lst
+|       |       |           inputFiles.lst
+|       |       |           
+|       |       \---testCompile
+|       |           \---default-testCompile
+|       |                   createdFiles.lst
+|       |                   inputFiles.lst
+|       |                   
+|       \---test-classes
++---ai-openai
+|   |   pom.xml
+|   |   
+|   +---src
+|   |   +---main
+|   |   |   +---java
+|   |   |   |   \---spring
+|   |   |   |       \---ai
+|   |   |   |           \---example
+|   |   |   |               \---spring_ai_demo
+|   |   |   |                   \---ai
+|   |   |   |                       \---superpowers
+|   |   |   |                               OpenAiSuperpowerProvider.java
+|   |   |   |                               
+|   |   |   \---resources
+|   |   \---test
+|   |       \---java
+|   \---target
+|       |   ai-openai-0.0.1-SNAPSHOT.jar
+|       |   
+|       +---classes
+|       |   \---spring
+|       |       \---ai
+|       |           \---example
+|       |               \---spring_ai_demo
+|       |                   \---ai
+|       |                       \---superpowers
+|       |                               OpenAiSuperpowerProvider.class
+|       |                               
+|       +---generated-sources
+|       |   \---annotations
+|       +---generated-test-sources
+|       |   \---test-annotations
+|       +---maven-archiver
+|       |       pom.properties
+|       |       
+|       +---maven-status
+|       |   \---maven-compiler-plugin
+|       |       +---compile
+|       |       |   \---default-compile
+|       |       |           createdFiles.lst
+|       |       |           inputFiles.lst
+|       |       |           
+|       |       \---testCompile
+|       |           \---default-testCompile
+|       |                   createdFiles.lst
+|       |                   inputFiles.lst
+|       |                   
+|       \---test-classes
++---backup
+|   |   application.properties
+|   |   ChatConfig.java
+|   |   
+|   +---advisor
+|   |       PaninoAdvisor.java
+|   |       
+|   +---config
+|   |       AiConfig.java
+|   |       SecurityConfig.java
+|   |       WeatherToolsConfig.java
+|   |       
+|   +---controller
+|   +---controller_backup
+|   |       AdvisorController.java
+|   |       AnthropicController.java
+|   |       asfed
+|   |       AzureAudioController.java
+|   |       AzureController.java
+|   |       AzureEmbeddingController.java
+|   |       AzureImageController.java
+|   |       BaseAudioController.java
+|   |       BaseImageController.java
+|   |       BedrockController.java
+|   |       BedrockEmbeddingController.java
+|   |       BonusController.java
+|   |       ChatController.java
+|   |       ChatMemoryController.java
+|   |       ConverterController.java
+|   |       CustomAdvisorController.java
+|   |       DeepSeekController.java
+|   |       DefaultsController.java
+|   |       DockerRunnerController.java
+|   |       ElevenLabsTtsController.java
+|   |       EmbeddingController.java
+|   |       GeminiController.java
+|   |       GoogleGenAiEmbeddingController.java
+|   |       GroqController.java
+|   |       HuggingFaceController.java
+|   |       MemoryController.java
+|   |       MetadataController.java
+|   |       MiniMaxController.java
+|   |       MiniMaxEmbeddingController.java
+|   |       MistralController.java
+|   |       MistralEmbeddingController.java
+|   |       MistralModerationController.java
+|   |       ModerationController.java
+|   |       MoonshotController.java
+|   |       MultimodalController.java
+|   |       NvidiaController.java
+|   |       OciCohereController.java
+|   |       OciGenAiEmbeddingController.java
+|   |       OllamaAdvancedEmbeddingController.java
+|   |       OllamaController.java
+|   |       OllamaVisionController.java
+|   |       OpenAiAudioController.java
+|   |       OpenAiNativeController.java
+|   |       OpenAiOfficialController.java
+|   |       OpenAiSdkEmbeddingController.java
+|   |       OpenAiSdkImageController.java
+|   |       OpenAiStandardEmbeddingController.java
+|   |       OpenAiStandardImageController.java
+|   |       OpenAiTtsController.java
+|   |       PerplexityController.java
+|   |       PostgresMlEmbeddingController.java
+|   |       PromptController.java
+|   |       PromptEngineeringController.java
+|   |       QianFanController.java
+|   |       QianFanEmbeddingController.java
+|   |       QianFanImageController.java
+|   |       ResponseFormatController.java
+|   |       StabilityAiImageController.java
+|   |       StoryController.java
+|   |       StreamingController.java
+|   |       TemplateController.java
+|   |       TokenController.java
+|   |       ToolController.java
+|   |       ToolsController.java
+|   |       TransformersEmbeddingController.java
+|   |       TtsController.java
+|   |       ValidationController.java
+|   |       VertexAiEmbeddingController.java
+|   |       VertexAiMultimodalController.java
+|   |       VertexController.java
+|   |       ZhiPuAiEmbeddingController.java
+|   |       ZhiPuAiImageController.java
+|   |       ZhiPuController.java
+|   |       
+|   +---service
+|   |       ChatMemoryService.java
+|   |       ImageService.java
+|   |       MultiModelService.java
+|   |       NarrationService.java
+|   |       ServizioOrdini.java
+|   |       ToolCallingService.java
+|   |       TranscriptionService.java
+|   |       
+|   \---tools
+\---data
+        chatdb.mv.db
+        

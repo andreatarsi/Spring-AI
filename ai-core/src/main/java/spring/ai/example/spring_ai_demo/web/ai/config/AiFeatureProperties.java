@@ -21,6 +21,7 @@ public class AiFeatureProperties {
         private boolean loggingEnabled;
         private boolean structuredOutput;
         private OutputFormat outputFormat = OutputFormat.TEXT; // Default
+        private boolean debugTools = false;
     }
 
     // Enum per forzare i valori accettati nello YAML

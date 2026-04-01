@@ -16,6 +16,9 @@ spring:
       - org.springframework.ai.model.azure.openai.autoconfigure.AzureOpenAiEmbeddingAutoConfiguration
       - org.springframework.ai.model.zhipuai.autoconfigure.ZhiPuAiChatAutoConfiguration
       - org.springframework.ai.model.zhipuai.autoconfigure.ZhiPuAiImageAutoConfiguration
+      # 🌟 AGGIUNGI QUESTA RIGA PER SBLOCCARE L'INSPECTOR:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
 
   # ----------------------------------------------------------------------------
   # DISATTIVAZIONE CHIRURGICA & CONFIGURAZIONE MODELLI
@@ -105,6 +108,24 @@ spring:
       chat:
         enabled: ${MOONSHOT_ENABLED:false}
 
+    # 🔌 LA NOSTRA CONNESSIONE MCP
+    mcp:
+      server:
+        type: SYNC
+        protocol: SSE
+        # Diciamo al server di "pingare" i client ogni 30 secondi per vedere se ci sono ancora
+        keep-alive-interval: 30s
+      client:
+        stdio:
+          connections:
+            memory-server:
+              command: "cmd.exe"       # <-- Il vero eseguibile di Windows!
+              args:
+                - "/c"                 # <-- Chiude la shell appena Node.js finisce
+                - "npx"
+                - "-y"
+                - "@modelcontextprotocol/server-memory"
+
 # ==============================================================================
 # IL CRUSCOTTO DELLE FEATURE (Fondamentale per la tua classe Java)
 # ==============================================================================
@@ -117,7 +138,8 @@ app:
       tools-enabled: true
       logging-enabled: true
       structured-output: true
-      output-format: JSON
+      output-format: TEXT #JSON TEXT
+      debug-tools: true     # <--- LA NUOVA FEATURE DI DEBUG
 
 # 📊 CONFIGURAZIONE ACTUATOR E METRICHE
 management:
